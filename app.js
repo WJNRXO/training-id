@@ -1,5 +1,5 @@
 // GANTI dengan URL Apps Script kamu
-const API_URL = 'https://script.google.com/macros/s/AKfycbyw6XChl7hHQEDGIBC0BwoN7OQLX7FVDMJsS1Nej0CLon_kyad-jVx5qFuApp3wkrDI/exec';
+const API_URL = https://script.google.com/macros/s/AKfycbyw6XChl7hHQEDGIBC0BwoN7OQLX7FVDMJsS1Nej0CLon_kyad-jVx5qFuApp3wkrDI/exec;
 
 // Ambil employee_id dari URL: ?id=EMP-001
 const params = new AKfycbyw6XChl7hHQEDGIBC0BwoN7OQLX7FVDMJsS1Nej0CLon_kyad-jVx5qFuApp3wkrDI(window.location.search);
