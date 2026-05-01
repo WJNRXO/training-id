@@ -1,8 +1,6 @@
-// GANTI dengan URL Apps Script kamu
-const API_URL = https://script.google.com/macros/s/AKfycbyw6XChl7hHQEDGIBC0BwoN7OQLX7FVDMJsS1Nej0CLon_kyad-jVx5qFuApp3wkrDI/exec;
+const API_URL = 'https://script.google.com/macros/s/AKfycbyw6XChl7hHQEDGIBC0BwoN7OQLX7FVDMJsS1Nej0CLon_kyad-jVx5qFuApp3wkrDI/exec';
 
-// Ambil employee_id dari URL: ?id=EMP-001
-const params = new AKfycbyw6XChl7hHQEDGIBC0BwoN7OQLX7FVDMJsS1Nej0CLon_kyad-jVx5qFuApp3wkrDI(window.location.search);
+const params = new URLSearchParams(window.location.search);
 const employeeId = params.get('id');
 
 async function loadData() {
@@ -10,16 +8,13 @@ async function loadData() {
     showError();
     return;
   }
-
   try {
     const res = await fetch(`${API_URL}?id=${employeeId}`);
     const data = await res.json();
-
     if (data.error) {
       showError();
       return;
     }
-
     renderProfile(data);
   } catch (err) {
     showError();
@@ -28,8 +23,6 @@ async function loadData() {
 
 function renderProfile(data) {
   const { karyawan, trainings } = data;
-
-  // Inisial avatar
   const inisial = karyawan.nama.split(' ').slice(0, 2).map(n => n[0]).join('');
   document.getElementById('avatar').textContent = inisial;
   document.getElementById('nama').textContent = karyawan.nama;
@@ -55,7 +48,6 @@ function renderList(containerId, items, isDone) {
     container.innerHTML = '<p style="font-size:13px;color:#bbb;padding:8px 0">Tidak ada data</p>';
     return;
   }
-
   container.innerHTML = items.map(t => `
     <div class="training-item">
       <div class="dot ${isDone ? 'done' : 'pending'}"></div>
