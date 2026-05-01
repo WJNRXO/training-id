@@ -9,7 +9,10 @@ async function loadData() {
     return;
   }
   try {
-    const res = await fetch(`${API_URL}?id=${employeeId}`);
+    const res = await fetch(`${API_URL}?id=${employeeId}`, {
+      method: 'GET',
+      redirect: 'follow'
+    });
     const data = await res.json();
     if (data.error) {
       showError();
@@ -17,6 +20,7 @@ async function loadData() {
     }
     renderProfile(data);
   } catch (err) {
+    console.log('Error:', err);
     showError();
   }
 }
