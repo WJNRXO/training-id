@@ -17,15 +17,19 @@ async function loadData() {
 }
 
 function renderProfile(data) {
-  const k = data.karyawan;
-  const inisial = k.nama.split(' ').slice(0,2).map(function(n){ return n[0]; }).join('');
+  var k = data.karyawan;
+  var inisial = k.nama.split(' ').slice(0,2).map(function(n){ return n[0]; }).join('');
   document.getElementById('avatar').textContent = inisial;
   document.getElementById('nama').textContent = k.nama;
   document.getElementById('divisi-jabatan').textContent = k.divisi + ' · ' + k.jabatan;
   document.getElementById('employee-id').textContent = k.employee_id;
 
-  const selesai = data.trainings.filter(function(t){ return t.status === 'Selesai'; });
-  const belum = data.trainings.filter(function(t){ return t.status === 'Belum'; });
+  var selesai = data.trainings.filter(function(t){
+    return t.status.toLowerCase().trim() === 'selesai';
+  });
+  var belum = data.trainings.filter(function(t){
+    return t.status.toLowerCase().trim() === 'belum';
+  });
 
   document.getElementById('count-selesai').textContent = selesai.length;
   document.getElementById('count-belum').textContent = belum.length;
